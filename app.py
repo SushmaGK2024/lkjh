@@ -10,6 +10,7 @@ from transformers import BertTokenizer, BertForSequenceClassification
 from sklearn.preprocessing import LabelEncoder
 import torch
 import joblib
+import os
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -135,5 +136,6 @@ def predict_category_route():
     return jsonify({'predicted_category': predicted_category})
 
 
-    port = int(os.environ.get('PORT', 5000))  # Use the PORT environment variable if set, otherwise default to 5000
-    app.run(host='0.0.0.0', port=port)
+    # Set up the app to read the port from the environment variable
+port = int(os.environ.get('PORT', 5000))  # Use the PORT environment variable if set, otherwise default to 5000
+app.run(host='0.0.0.0', port=port)
