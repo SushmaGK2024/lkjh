@@ -89,7 +89,7 @@ def extract_questions_route():
     data = request.json
     overall_experience = data.get('overallExperience')
     # Extract questions from overall experience
-    text=overall_experience
+    text = overall_experience
     sentences = sent_tokenize(text)
 
     # Tokenize words in each sentence
@@ -124,6 +124,7 @@ def extract_questions(sentences, lemmatized_words):
     except Exception as e:
         print(f"Error during question extraction: {e}", file=sys.stderr)
         return None
+
 @app.route('/predict-category', methods=['POST'])
 def predict_category_route():
     # Get the question from the request body
@@ -131,11 +132,10 @@ def predict_category_route():
 
     # Predict the category
     predicted_category = predict_category(question)
-    print(predicted_category,question)
+    print(predicted_category, question)
     # Return the predicted category as a JSON response
     return jsonify({'predicted_category': predicted_category})
 
-
-    # Set up the app to read the port from the environment variable
+# Set up the app to read the port from the environment variable
 port = int(os.environ.get('PORT', 5000))  # Use the PORT environment variable if set, otherwise default to 5000
 app.run(host='0.0.0.0', port=port)
