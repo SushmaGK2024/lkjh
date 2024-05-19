@@ -15,7 +15,7 @@ import joblib
 app = Flask(__name__)
 
 # Load pre-trained BERT model and tokenizer
-model_name = "bert-base-uncased"
+model_name = "thanuja2510/pymodel"
 tokenizer = BertTokenizer.from_pretrained(model_name)
 model = BertForSequenceClassification.from_pretrained(model_name, num_labels=2)
 
