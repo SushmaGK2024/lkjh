@@ -12,11 +12,6 @@ import torch
 import joblib
 import os
 
-# Download NLTK data
-nltk.download('punkt')
-nltk.download('stopwords')
-nltk.download('wordnet')
-
 # Initialize Flask app
 app = Flask(__name__)
 
@@ -105,7 +100,7 @@ def extract_questions_route():
 
     # Remove stopwords and punctuation
     stop_words = set(stopwords.words("english"))
-    filtered_words = [word.lower() for word in words if word isalnum() and word.lower() not in stop_words]
+    filtered_words = [word.lower() for word in words if word.isalnum() and word.lower() not in stop_words]
 
     # Lemmatization
     lemmatizer = WordNetLemmatizer()
