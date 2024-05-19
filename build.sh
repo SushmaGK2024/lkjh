@@ -5,8 +5,8 @@ set -e
 rustup update stable
 
 # Set writable directories for cargo
-export CARGO_HOME=$HOME/.cargo
-export CARGO_TARGET_DIR=$HOME/.cargo_target
+export CARGO_HOME=/home/render/.cargo
+export CARGO_TARGET_DIR=/home/render/.cargo_target
 
 # Install system dependencies
 apt-get update && apt-get install -y build-essential libssl-dev pkg-config
