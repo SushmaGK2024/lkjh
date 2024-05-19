@@ -20,7 +20,7 @@ tokenizer = BertTokenizer.from_pretrained(model_name)
 model = BertForSequenceClassification.from_pretrained(model_name, num_labels=2)
 
 # Load the fine-tuned model
-model_path = "thanuja2510/pymodel"
+model_path = "fine_tuned_bert_model"
 model = BertForSequenceClassification.from_pretrained(model_path)
 
 # Specify the path to the label encoder file
