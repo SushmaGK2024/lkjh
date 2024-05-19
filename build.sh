@@ -2,8 +2,8 @@
 set -e
 
 # Set writable directories for cargo
-export CARGO_HOME=$HOME/.cargo
-export CARGO_TARGET_DIR=$HOME/.cargo_target
+export CARGO_HOME=/home/render/.cargo
+export CARGO_TARGET_DIR=/home/render/.cargo_target
 
 # Install dependencies
 pip install numpy
