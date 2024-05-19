@@ -1,11 +1,15 @@
 #!/bin/bash
 set -e
 
+# Update Rust toolchain
+rustup update stable
+
 # Set writable directories for cargo
 export CARGO_HOME=$HOME/.cargo
 export CARGO_TARGET_DIR=$HOME/.cargo_target
 
-# Install dependencies
-pip install numpy
-pip install tokenizers
+# Install system dependencies
+apt-get update && apt-get install -y build-essential libssl-dev pkg-config
+
+# Install Python dependencies
 pip install -r requirements.txt
