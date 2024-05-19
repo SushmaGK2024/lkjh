@@ -134,5 +134,3 @@ def predict_category_route():
     # Return the predicted category as a JSON response
     return jsonify({'predicted_category': predicted_category})
 
-if __name__ == '__main__':
-    app.run(debug=True)  # Run the Flask app in debug mode
