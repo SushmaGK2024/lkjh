@@ -10,6 +10,7 @@ from transformers import BertTokenizer, BertForSequenceClassification
 from sklearn.preprocessing import LabelEncoder
 import torch
 import joblib
+import os
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -20,7 +21,7 @@ tokenizer = BertTokenizer.from_pretrained(model_name)
 model = BertForSequenceClassification.from_pretrained(model_name, num_labels=2)
 
 # Load the fine-tuned model
-model_path = "fine_tuned_bert_model"
+model_path = "thanuja2510/pymodel"
 model = BertForSequenceClassification.from_pretrained(model_path)
 
 # Specify the path to the label encoder file
@@ -134,5 +135,4 @@ def predict_category_route():
     # Return the predicted category as a JSON response
     return jsonify({'predicted_category': predicted_category})
 
-if __name__ == '__main__':
-    app.run(debug=True)  # Run the Flask app in debug mode
+
