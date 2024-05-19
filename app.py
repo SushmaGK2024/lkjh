@@ -1,4 +1,3 @@
-# Import necessary libraries
 import nltk
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.corpus import stopwords
@@ -89,7 +88,7 @@ def extract_questions_route():
     data = request.json
     overall_experience = data.get('overallExperience')
     # Extract questions from overall experience
-    text=overall_experience
+    text = overall_experience
     sentences = sent_tokenize(text)
 
     # Tokenize words in each sentence
@@ -111,19 +110,15 @@ def extract_questions_route():
 
 # Function to extract questions from sentences
 def extract_questions(sentences, lemmatized_words):
-    print("sentences : ", sentences)
-    print("lem : ", lemmatized_words)
-    questions = []
     interrogative_words = ["who", "what", "where", "when", "why", "how", "which", "whose", "whom", "explain", "tell", "do", "did", "question", "questions", "find", "write", "code", "programming", "approach"]
     try:
-        for sentence in sentences:
-            words = word_tokenize(sentence)  # Tokenize the sentence into words
-            if any(word.lower() in interrogative_words or word.endswith('?') for word in words):
-                questions.append(sentence)
+        questions = [sentence for sentence in sentences if any(word.lower() in interrogative_words or word.endswith('?') for word in word_tokenize(sentence))]
         return questions
     except Exception as e:
         print(f"Error during question extraction: {e}", file=sys.stderr)
         return None
+
+# Route to predict category
 @app.route('/predict-category', methods=['POST'])
 def predict_category_route():
     # Get the question from the request body
@@ -131,8 +126,9 @@ def predict_category_route():
 
     # Predict the category
     predicted_category = predict_category(question)
-    print(predicted_category,question)
+
     # Return the predicted category as a JSON response
     return jsonify({'predicted_category': predicted_category})
 
-
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
