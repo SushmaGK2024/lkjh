@@ -1,6 +1,2 @@
-nltk
-transformers
-torch
-joblib
 Flask
-scikit-learn
+gunicorn
